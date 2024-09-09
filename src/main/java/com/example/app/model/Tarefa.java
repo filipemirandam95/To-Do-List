@@ -2,15 +2,14 @@ package com.example.app.model;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,11 +26,12 @@ public class Tarefa {
 	@Column(name = "concluida")
 	private boolean concluida;
 
-	@ManyToOne
-	@JoinColumn(name = "id")
-	@JsonBackReference
+	private Long idUsuario;
 
-	private Usuario usuario;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "idUsuario")
+//	@JsonBackReference
+//	private Usuario usuario;
 
 	public String getNome() {
 		return nome;
@@ -49,16 +49,16 @@ public class Tarefa {
 		this.data = data;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public boolean isConcluida() {
 		return concluida;
+	}
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public void setConcluida(boolean concluida) {

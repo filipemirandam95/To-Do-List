@@ -12,8 +12,8 @@ import com.example.app.model.UsuarioRepository;
 import com.example.app.service.TarefaService;
 
 /**
- * Implementação da <b>Strategy</b> {@link TarefaService}, que foi injetada
- * pelo Spring (via {@link Autowired}). Dessa forma, como essa classe é um
+ * Implementação da <b>Strategy</b> {@link TarefaService}, que foi injetada pelo
+ * Spring (via {@link Autowired}). Dessa forma, como essa classe é um
  * {@link Service}, ela será tratada como um <b>Singleton</b>.
  * 
  * @author Filipe Miranda
@@ -39,7 +39,7 @@ public class TarefaServiceImplementation implements TarefaService {
 
 	@Override
 	public void inserirTarefa(Tarefa tarefa) {
-		Optional<Usuario> usuario = usuarioRepository.findById(tarefa.getUsuario().getId());
+		Optional<Usuario> usuario = usuarioRepository.findById(tarefa.getIdUsuario());
 		if (usuario.isPresent()) {
 			tarefaRepository.save(tarefa);
 		}
